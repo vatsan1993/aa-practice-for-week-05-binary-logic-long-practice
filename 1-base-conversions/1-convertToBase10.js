@@ -7,10 +7,11 @@ const convertToBase10 = (str) => {
   let value = 0;
   if (str.substring(0, 2) == '0b') {
     str = str.substring(2);
-    for (let power = 0; power < str.length; power++) {
-      let index = str.length - 1 - power;
-      value += parseInt(str[index]) * Math.pow(2, power);
-    }
+    // for (let power = 0; power < str.length; power++) {
+    //   let index = str.length - 1 - power;
+    //   value += parseInt(str[index]) * Math.pow(2, power);
+    // }
+    value = parseInt(str, 2);
   } else {
     str = str.substring(2);
     for (let power = 0; power < str.length; power++) {

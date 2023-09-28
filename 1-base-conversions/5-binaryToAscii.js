@@ -4,7 +4,7 @@
 /******************************************************************************/
 
 // Helper function to convert a binary string into an array of 8-bit strings
-const binaryStringToArray = str => {
+const binaryStringToArray = (str) => {
   let binary8bitStr = '';
   let count = 0;
 
@@ -21,10 +21,15 @@ const binaryStringToArray = str => {
   return binary8bitStr.split(',');
 };
 
-const binaryToAscii = str => {
+const binaryToAscii = (str) => {
   // Your code here
+  let bins = binaryStringToArray(str);
+  let result = '';
+  for (let bin of bins) {
+    result += String.fromCharCode(parseInt(bin, 2));
+  }
+  return result;
 };
-
 /******************************************************************************/
 
 console.log(binaryToAscii('011000010110001001100011'));
@@ -33,5 +38,9 @@ console.log(binaryToAscii('011000010110001001100011'));
 console.log(binaryToAscii('010000010100001001000011'));
 // 'ABC'
 
-console.log(binaryToAscii('010010000110010101101100011011000110111100101100001000000111011101101111011100100110110001100100'));
+console.log(
+  binaryToAscii(
+    '010010000110010101101100011011000110111100101100001000000111011101101111011100100110110001100100'
+  )
+);
 // 'Hello, world'
