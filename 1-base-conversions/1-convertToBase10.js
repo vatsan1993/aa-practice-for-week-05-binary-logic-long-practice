@@ -2,8 +2,41 @@
 
 /******************************************************************************/
 
-const convertToBase10 = str => {
+const convertToBase10 = (str) => {
   // Your code here
+  let value = 0;
+  if (str.substring(0, 2) == '0b') {
+    str = str.substring(2);
+    for (let power = 0; power < str.length; power++) {
+      let index = str.length - 1 - power;
+      value += parseInt(str[index]) * Math.pow(2, power);
+    }
+  } else {
+    str = str.substring(2);
+    for (let power = 0; power < str.length; power++) {
+      let index = str.length - 1 - power;
+      let ch = str[index];
+      let val;
+      if (ch == 'a') {
+        val = 10;
+      } else if (ch == 'b') {
+        val = 11;
+      } else if (ch == 'c') {
+        val = 12;
+      } else if (ch == 'd') {
+        val = 13;
+      } else if (ch == 'e') {
+        val = 14;
+      } else if (ch == 'f') {
+        val = 15;
+      } else {
+        val = parseInt(str[index]);
+      }
+      value += parseInt(val) * Math.pow(16, power);
+    }
+  }
+
+  return value;
 };
 
 /******************************************************************************/
