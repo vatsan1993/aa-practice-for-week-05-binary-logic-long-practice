@@ -1,9 +1,46 @@
 // Convert the integers in the console.logs below to base 2
 
 /******************************************************************************/
-
-const convertToBase2 = element => {
+const hexToNum = (str) => {
+  let value = 0;
+  str = str.substring(2);
+  for (let power = 0; power < str.length; power++) {
+    let index = str.length - 1 - power;
+    let ch = str[index];
+    let val;
+    if (ch == 'a') {
+      val = 10;
+    } else if (ch == 'b') {
+      val = 11;
+    } else if (ch == 'c') {
+      val = 12;
+    } else if (ch == 'd') {
+      val = 13;
+    } else if (ch == 'e') {
+      val = 14;
+    } else if (ch == 'f') {
+      val = 15;
+    } else {
+      val = parseInt(str[index]);
+    }
+    value += parseInt(val) * Math.pow(16, power);
+  }
+  return value;
+};
+const convertToBase2 = (element) => {
   // Your code here
+  // console.log(typeof element === 'number');
+  if (typeof element === 'number') {
+    let str = '';
+    while (element !== 0) {
+      str = (element % 2) + str;
+      element = parseInt(element / 2);
+    }
+    return '0b' + str;
+  } else {
+    let num = hexToNum(element);
+    return convertToBase2(num);
+  }
 };
 
 /******************************************************************************/
