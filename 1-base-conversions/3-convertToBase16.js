@@ -1,9 +1,44 @@
 // Convert the integers in the console.logs below to base 16:
 
 /******************************************************************************/
+let binToNum = (str) => {
+  str = str.substring(2);
+  let value = 0;
+  for (let power = 0; power < str.length; power++) {
+    let index = str.length - 1 - power;
+    value += parseInt(str[index]) * Math.pow(2, power);
+  }
+  return value;
+};
 
-const convertToBase16 = element => {
+const convertToBase16 = (element) => {
   // Your code here
+  if (typeof element == 'number') {
+    let str = '';
+    while (element !== 0) {
+      let val = element % 16;
+      element = parseInt(element / 16);
+      if (val === 10) {
+        val = 'a';
+      } else if (val === 11) {
+        val = 'b';
+      } else if (val === 12) {
+        val = 'c';
+      } else if (val === 13) {
+        val = 'd';
+      } else if (val === 14) {
+        val = 'e';
+      } else if (val === 15) {
+        val = 'f';
+      }
+
+      str = val + str;
+    }
+    return '0x' + str;
+  } else {
+    let num = binToNum(element);
+    return convertToBase16(num);
+  }
 };
 
 /******************************************************************************/
