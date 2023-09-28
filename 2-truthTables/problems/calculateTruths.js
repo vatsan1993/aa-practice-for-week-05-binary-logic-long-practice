@@ -1,4 +1,4 @@
-const { or, and, calculateTruthTable } = require('../../utils/truthTableHelpers');
+// const { or, and, calculateTruthTable } = require('../../utils/truthTableHelpers');
 
 // Implement the imported helper functions from line 1
 //    Read the export file for the explanation of how they work
@@ -16,5 +16,16 @@ const { or, and, calculateTruthTable } = require('../../utils/truthTableHelpers'
 /******************************************************************************/
 
 // Update arguments to calculate and console.log returned value
+let or = (A, B) => {
+  if (A) return A;
+  else return B;
+};
+let and = (A, B) => {
+  if (A) return B;
+  else return A;
+};
+let calculateTruthTable = (A, cb, B) => {
+  console.log(cb(A, B));
+};
 calculateTruthTable(0, and, 1); // 0
 calculateTruthTable(1, or, 0); // 1
